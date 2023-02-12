@@ -264,7 +264,7 @@ MonoBehaviour:
   - name: Tornado
     collapsed: 1
   - name: Inner
-    collapsed: 1
+    collapsed: 0
   - name: Outside
     collapsed: 1
   - name: Core
@@ -487,7 +487,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Gradient, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"colorKeys":[{"color":{"r":47.937255859375,"g":11.545098304748536,"b":0.0,"a":1.0},"time":0.0},{"color":{"r":11.98431396484375,"g":3.5764706134796144,"b":0.0,"a":1.0},"time":1.0}],"alphaKeys":[{"alpha":1.0,"time":0.0},{"alpha":0.800000011920929,"time":0.800000011920929},{"alpha":0.0,"time":1.0}],"gradientMode":0}'
+      m_SerializableObject: '{"colorKeys":[{"color":{"r":47.937255859375,"g":11.545098304748536,"b":0.0,"a":1.0},"time":0.0},{"color":{"r":11.98431396484375,"g":3.5764706134796144,"b":0.0,"a":1.0},"time":1.0}],"alphaKeys":[{"alpha":1.0,"time":0.0},{"alpha":1.0,"time":0.7411764860153198},{"alpha":0.47058823704719546,"time":0.7941252589225769},{"alpha":0.0,"time":1.0}],"gradientMode":0}'
     min: -Infinity
     max: Infinity
     enumValues: []
@@ -2414,7 +2414,7 @@ MonoBehaviour:
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
   m_UIPosition: {x: 0, y: 0}
-  m_UICollapsed: 0
+  m_UICollapsed: 1
   m_UISuperCollapsed: 0
   m_InputSlots: []
   m_OutputSlots:
@@ -2673,7 +2673,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614675}
   m_ExposedName: Mesh
   m_Exposed: 1
-  m_Order: 1
+  m_Order: 2
   m_Category: Tornado
   m_Min:
     m_Type:
@@ -2761,7 +2761,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614691}
   m_ExposedName: DissolveCurve
   m_Exposed: 1
-  m_Order: 3
+  m_Order: 10
   m_Category: Inner
   m_Min:
     m_Type:
@@ -3162,7 +3162,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614703}
   m_ExposedName: InnerDissolve
   m_Exposed: 1
-  m_Order: 2
+  m_Order: 6
   m_Category: Inner
   m_Min:
     m_Type:
@@ -3308,7 +3308,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614863}
   m_ExposedName: OutsideDissolve
   m_Exposed: 1
-  m_Order: 2
+  m_Order: 7
   m_Category: Outside
   m_Min:
     m_Type:
@@ -3860,7 +3860,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614972}
   m_ExposedName: XScale
   m_Exposed: 1
-  m_Order: 5
+  m_Order: 15
   m_Category: Tornado
   m_Min:
     m_Type:
@@ -4084,7 +4084,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614978}
   m_ExposedName: YScale
   m_Exposed: 1
-  m_Order: 8
+  m_Order: 20
   m_Category: Tornado
   m_Min:
     m_Type:
@@ -4172,7 +4172,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614980}
   m_ExposedName: ZScale
   m_Exposed: 1
-  m_Order: 12
+  m_Order: 22
   m_Category: Tornado
   m_Min:
     m_Type:
@@ -7317,7 +7317,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615265}
   m_ExposedName: OutsideCurve
   m_Exposed: 1
-  m_Order: 3
+  m_Order: 11
   m_Category: Outside
   m_Min:
     m_Type:
@@ -10291,7 +10291,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615453}
   m_ExposedName: CoreCurve
   m_Exposed: 1
-  m_Order: 3
+  m_Order: 12
   m_Category: Core
   m_Min:
     m_Type:
@@ -10371,7 +10371,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615455}
   m_ExposedName: CoreDissolve
   m_Exposed: 1
-  m_Order: 2
+  m_Order: 8
   m_Category: Core
   m_Min:
     m_Type:
@@ -10451,7 +10451,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615457}
   m_ExposedName: CoreYScale
   m_Exposed: 1
-  m_Order: 5
+  m_Order: 16
   m_Category: Core
   m_Min:
     m_Type:
@@ -10531,7 +10531,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615552}
   m_ExposedName: CoreZScale
   m_Exposed: 1
-  m_Order: 6
+  m_Order: 17
   m_Category: Core
   m_Min:
     m_Type:
@@ -10611,7 +10611,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615554}
   m_ExposedName: CoreXScale
   m_Exposed: 1
-  m_Order: 4
+  m_Order: 14
   m_Category: Core
   m_Min:
     m_Type:
@@ -10691,7 +10691,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615560}
   m_ExposedName: CoreDuration
   m_Exposed: 1
-  m_Order: 1
+  m_Order: 3
   m_Category: Core
   m_Min:
     m_Type:
@@ -11604,7 +11604,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEditor.VFX.TArcTorus, Unity.VisualEffectGraph.Editor,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"torus":{"transform":{"position":{"x":0.0,"y":0.0,"z":0.0},"angles":{"x":90.0,"y":0.0,"z":0.0},"scale":{"x":1.0,"y":1.0,"z":1.0}},"majorRadius":2.0,"minorRadius":0.25},"arc":6.2831854820251469}'
+      m_SerializableObject: '{"torus":{"transform":{"position":{"x":0.0,"y":0.0,"z":0.0},"angles":{"x":90.0,"y":0.0,"z":0.0},"scale":{"x":1.0,"y":1.0,"z":1.0}},"majorRadius":2.740000009536743,"minorRadius":1.0},"arc":6.2831854820251469}'
     m_Space: 0
   m_Property:
     name: arcTorus
@@ -14735,7 +14735,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615683}
   m_ExposedName: AlphaCurve
   m_Exposed: 1
-  m_Order: 6
+  m_Order: 18
   m_Category: FloorFire
   m_Min:
     m_Type:
@@ -14815,7 +14815,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615685}
   m_ExposedName: Gradient
   m_Exposed: 1
-  m_Order: 2
+  m_Order: 9
   m_Category: FloorFire
   m_Min:
     m_Type:
@@ -14895,7 +14895,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615687}
   m_ExposedName: FloorSizeCurve
   m_Exposed: 1
-  m_Order: 10
+  m_Order: 21
   m_Category: FloorFire
   m_Min:
     m_Type:
@@ -14977,7 +14977,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 1
+      m_SerializableObject: 0.8
     m_Space: 2147483647
   m_Property:
     name: DelayBeforeLoop
@@ -17188,7 +17188,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 1
+      m_SerializableObject: 0.8
     m_Space: 2147483647
   m_Property:
     name: DelayBeforeLoop
@@ -18716,7 +18716,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615831}
   m_ExposedName: UpSizeCueve
   m_Exposed: 1
-  m_Order: 7
+  m_Order: 19
   m_Category: UpFire
   m_Min:
     m_Type:
@@ -18796,7 +18796,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615833}
   m_ExposedName: UpAlphaCurve
   m_Exposed: 1
-  m_Order: 3
+  m_Order: 13
   m_Category: UpFire
   m_Min:
     m_Type:
@@ -19221,7 +19221,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615845}
   m_ExposedName: CoreGradient
   m_Exposed: 1
-  m_Order: 0
+  m_Order: 1
   m_Category: Core
   m_Min:
     m_Type:
@@ -19621,7 +19621,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615857}
   m_ExposedName: OutsideGradient
   m_Exposed: 1
-  m_Order: 1
+  m_Order: 4
   m_Category: Outside
   m_Min:
     m_Type:
@@ -20021,7 +20021,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615869}
   m_ExposedName: InnerGradient
   m_Exposed: 1
-  m_Order: 1
+  m_Order: 5
   m_Category: Inner
   m_Min:
     m_Type:
@@ -20068,7 +20068,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Gradient, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"colorKeys":[{"color":{"r":47.937255859375,"g":11.545098304748536,"b":0.0,"a":1.0},"time":0.0},{"color":{"r":11.98431396484375,"g":3.5764706134796144,"b":0.0,"a":1.0},"time":1.0}],"alphaKeys":[{"alpha":1.0,"time":0.0},{"alpha":0.800000011920929,"time":0.800000011920929},{"alpha":0.0,"time":1.0}],"gradientMode":0}'
+      m_SerializableObject: '{"colorKeys":[{"color":{"r":47.937255859375,"g":11.545098304748536,"b":0.0,"a":1.0},"time":0.0},{"color":{"r":11.98431396484375,"g":3.5764706134796144,"b":0.0,"a":1.0},"time":1.0}],"alphaKeys":[{"alpha":1.0,"time":0.0},{"alpha":1.0,"time":0.7411764860153198},{"alpha":0.47058823704719546,"time":0.7941252589225769},{"alpha":0.0,"time":1.0}],"gradientMode":0}'
     m_Space: 2147483647
   m_Property:
     name: o
