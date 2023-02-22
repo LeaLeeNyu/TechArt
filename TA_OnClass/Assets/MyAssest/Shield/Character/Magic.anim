@@ -79513,7 +79513,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.8666667
-    functionName: SpawnMazzleVFX
+    functionName: SpawnVFX
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
