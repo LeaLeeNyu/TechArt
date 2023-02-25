@@ -22,11 +22,7 @@ public class SpawnMazzle : MonoBehaviour
     {
         if (_Projectile != null)
         {
-            Vector3 projectileDirect = new Vector3(shieldTrans.position.x - characterTrans.position.x,
-                                                   shieldTrans.position.y - VFXTransform.position.y,
-                                                   shieldTrans.position.z - characterTrans.position.z);
-            //projectileObject.GetComponent<Rigidbody>().AddForce(projectileDirect.normalized * _projectileSpeed);
-            _Projectile.transform.position += projectileDirect.normalized * _projectileSpeed;
+
         }
     }
 
@@ -38,10 +34,12 @@ public class SpawnMazzle : MonoBehaviour
 
         //Spawn projectile
         _Projectile = Instantiate(_projectilePrefab, VFXTransform.position, VFXTransform.rotation, _projectileParent);
-        //_ProjectileParticle = _Projectile.GetComponentsInChildren<ParticleSystem>()[0];
-        //_ProjectileParticle.Play(true);
-
-        //Destroy(_Projectile,1f);
+        _ProjectileParticle = _Projectile.GetComponentsInChildren<ParticleSystem>()[0];
+        _ProjectileParticle.Play(true);
+        Vector3 projectileDirect = new Vector3(characterTrans.position.x - shieldTrans.position.x, VFXTransform.position.y - shieldTrans.position.y, characterTrans.position.z - shieldTrans.position.z);
+        //projectileObject.GetComponent<Rigidbody>().AddForce(projectileDirect.normalized * _projectileSpeed);
+        _Projectile.transform.position +=projectileDirect.normalized * _projectileSpeed;
+        Destroy(_Projectile, 1f);
     }
 
 

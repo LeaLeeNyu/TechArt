@@ -127,7 +127,7 @@ Material:
     - _DoubleSidedConstants: {r: 1, g: 1, b: 1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _FresnelColor: {r: 4.867145, g: 0, b: 0.18157986, a: 1}
-    - _FrontColor: {r: 0, g: 2.9948857, b: 7.4642644, a: 0.21568628}
+    - _FrontColor: {r: 0, g: 2.9948857, b: 7.4642644, a: 0.50980395}
     - _SphereCenter: {r: 0.1, g: 0.1, b: 0.1, a: 0}
     - _VertexOffset: {r: 0.15, g: 0.15, b: 0.15, a: 0}
   m_BuildTextureStacks: []

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.11825204, g: 0.15587044, b: 0.30888462, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -553,7 +553,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _MazzlePrefab: {fileID: 5826355182252653220, guid: 6e44aeddca0aa1844855512a62c1ae4f,
     type: 3}
-  _projectileSpeed: 0.08
+  _projectileSpeed: 1
   _projectilePrefab: {fileID: 8799472742639359107, guid: 3c6600489023497498fcff24e5675222,
     type: 3}
   _projectileParent: {fileID: 2003316910}
@@ -5673,7 +5673,7 @@ Transform:
   m_GameObject: {fileID: 2003316907}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -7287,7 +7287,7 @@ Transform:
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 4}
-  m_ConstrainProportionsScale: 1
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1830804578814425128}
   m_RootOrder: 0
@@ -7306,7 +7306,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shieldRipples: {fileID: 9080351637918545807, guid: 7e17d245c71452546a0b8e950f04759b,
     type: 3}
-  parentTrans: {fileID: 1830804578814425128}
 --- !u!135 &5509537038137695540
 SphereCollider:
   m_ObjectHideFlags: 0

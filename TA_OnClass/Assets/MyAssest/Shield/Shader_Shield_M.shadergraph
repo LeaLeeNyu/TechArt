@@ -4272,6 +4272,7 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
+<<<<<<< HEAD
 <<<<<<< Updated upstream
             "x": -2910.400390625,
             "y": -619.2000122070313,
@@ -4283,6 +4284,12 @@
             "width": 209.333251953125,
             "height": 327.9999694824219
 >>>>>>> Stashed changes
+=======
+            "x": -2908.666259765625,
+            "y": -619.3334350585938,
+            "width": 209.3330078125,
+            "height": 328.00006103515627
+>>>>>>> parent of ffca710 (Week 5 OnClass)
         }
     },
     "m_Slots": [
@@ -5940,6 +5947,7 @@
     "m_ObjectId": "c55e27893fc2431089b88c81be5b801d",
     "m_Title": "Random Face",
     "m_Position": {
+<<<<<<< HEAD
 <<<<<<< Updated upstream
         "x": -3384.800048828125,
         "y": -1298.4000244140625
@@ -5947,6 +5955,10 @@
         "x": -3328.666748046875,
         "y": -1483.3333740234375
 >>>>>>> Stashed changes
+=======
+        "x": -3384.66650390625,
+        "y": -1296.6666259765625
+>>>>>>> parent of ffca710 (Week 5 OnClass)
     }
 }
 
