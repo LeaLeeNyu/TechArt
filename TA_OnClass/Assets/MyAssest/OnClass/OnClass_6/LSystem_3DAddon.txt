@@ -1,0 +1,51 @@
+if (currentChar == 'B') // Add a branch
+{
+    branches.Add(new Branch(workingTransform, length, radius, radialSegments, capSegments));
+}
+else if (currentChar == 'F') // Move forward and add branch
+{
+    workingTransform *= Matrix4x4.Translate(Vector3.up * length);
+    branches.Add(new Branch(workingTransform, length, radius, radialSegments, capSegments));
+}
+else if (currentChar == 't') // Move branch origin downwards
+{
+    workingTransform *= Matrix4x4.Translate(Vector3.down * length);
+}
+else if (currentChar == 'T') // Move branch origin upwards
+{
+    workingTransform *= Matrix4x4.Translate(Vector3.up * length);
+}
+else if (currentChar == 'x') // Rotate ccw around X axis
+{
+    workingTransform *= Matrix4x4.Rotate(Quaternion.Euler(+angle, 0, 0));
+}
+else if (currentChar == 'X') // Rotate cw around X axis
+{
+    workingTransform *= Matrix4x4.Rotate(Quaternion.Euler(-angle, 0, 0));
+}
+else if (currentChar == 'y') // Rotate ccw around Y axis
+{
+    workingTransform *= Matrix4x4.Rotate(Quaternion.Euler(0, +angle, 0));
+}
+else if (currentChar == 'Y') // Rotate cw around Y axis
+{
+    workingTransform *= Matrix4x4.Rotate(Quaternion.Euler(0, -angle, 0));
+}
+else if (currentChar == 'z') // Rotate ccw around Z axis
+{
+    workingTransform *= Matrix4x4.Rotate(Quaternion.Euler(0, 0, +angle));
+}
+else if (currentChar == 'Z') // Rotate cw around Z axis
+{
+    workingTransform *= Matrix4x4.Rotate(Quaternion.Euler(0, 0, -angle));
+}
+else if (currentChar == '[') // Save transform
+{
+    transformStack.Add(workingTransform);
+}
+else if (currentChar == ']') // Recall transform
+{
+    int lastIndex = transformStack.Count - 1;
+    workingTransform = transformStack[lastIndex];
+    transformStack.RemoveAt(lastIndex);
+}
