@@ -95,10 +95,13 @@ public class ProceduralDestroy : MonoBehaviour
                 var sideCount = (sideA ? 1 : 0) +
                                 (sideB ? 1 : 0) +
                                 (sideC ? 1 : 0);
+
+                // if there is no vertices on the left side
                 if (sideCount == 0)
                 {
                     continue;
                 }
+                // if all three vertices is on the left side, all whole mesh to partMesh
                 if (sideCount == 3)
                 {
                     partMesh.AddTriangle(i,
@@ -108,9 +111,12 @@ public class ProceduralDestroy : MonoBehaviour
                     continue;
                 }
 
-                //cut points
-                var singleIndex = sideB == sideC ? 0 : sideA == sideC ? 1 : 2;
+                // Get the how many points on the left side
+                // if only one, add one triangle to partmesh
+                // if two, add two triangles to partmesh
+                var singleIndex = sideB == sideC ? 0 : (sideA == sideC ? 1 : 2);
 
+                // Get the points through raycast
                 ray1.origin = original.Vertices[triangles[j + singleIndex]];
                 var dir1 = original.Vertices[triangles[j + ((singleIndex + 1) % 3)]] - original.Vertices[triangles[j + singleIndex]];
                 ray1.direction = dir1;
@@ -126,18 +132,21 @@ public class ProceduralDestroy : MonoBehaviour
                 //first vertex = ancor
                 AddEdge(i,
                         partMesh,
+                        //normal
                         left ? plane.normal * -1f : plane.normal,
+                        //vertex1: the cut point 1
                         ray1.origin + ray1.direction.normalized * enter1,
+                        //vertex2: the cut point 2
                         ray2.origin + ray2.direction.normalized * enter2,
+                        //UV1
                         Vector2.Lerp(original.UV[triangles[j + singleIndex]], original.UV[triangles[j + ((singleIndex + 1) % 3)]], lerp1),
+                        //UV2
                         Vector2.Lerp(original.UV[triangles[j + singleIndex]], original.UV[triangles[j + ((singleIndex + 2) % 3)]], lerp2));
 
                 if (sideCount == 1)
                 {
                     partMesh.AddTriangle(i,
-                                        original.Vertices[triangles[j + singleIndex]],
-                                        //Vector3.Lerp(originalMesh.vertices[triangles[j + singleIndex]], originalMesh.vertices[triangles[j + ((singleIndex + 1) % 3)]], lerp1),
-                                        //Vector3.Lerp(originalMesh.vertices[triangles[j + singleIndex]], originalMesh.vertices[triangles[j + ((singleIndex + 2) % 3)]], lerp2),
+                                        original.Vertices[triangles[j + singleIndex]],                                        
                                         ray1.origin + ray1.direction.normalized * enter1,
                                         ray2.origin + ray2.direction.normalized * enter2,
                                         original.Normals[triangles[j + singleIndex]],
@@ -153,23 +162,29 @@ public class ProceduralDestroy : MonoBehaviour
                 if (sideCount == 2)
                 {
                     partMesh.AddTriangle(i,
+                                        //Vertex
                                         ray1.origin + ray1.direction.normalized * enter1,
                                         original.Vertices[triangles[j + ((singleIndex + 1) % 3)]],
                                         original.Vertices[triangles[j + ((singleIndex + 2) % 3)]],
+                                        //Normal
                                         Vector3.Lerp(original.Normals[triangles[j + singleIndex]], original.Normals[triangles[j + ((singleIndex + 1) % 3)]], lerp1),
                                         original.Normals[triangles[j + ((singleIndex + 1) % 3)]],
                                         original.Normals[triangles[j + ((singleIndex + 2) % 3)]],
+                                        //UV
                                         Vector2.Lerp(original.UV[triangles[j + singleIndex]], original.UV[triangles[j + ((singleIndex + 1) % 3)]], lerp1),
                                         original.UV[triangles[j + ((singleIndex + 1) % 3)]],
                                         original.UV[triangles[j + ((singleIndex + 2) % 3)]]);
                     partMesh.AddTriangle(i,
+                                        //Vertex
                                         ray1.origin + ray1.direction.normalized * enter1,
                                         original.Vertices[triangles[j + ((singleIndex + 2) % 3)]],
                                         ray2.origin + ray2.direction.normalized * enter2,
+                                        //Normal
                                         Vector3.Lerp(original.Normals[triangles[j + singleIndex]], original.Normals[triangles[j + ((singleIndex + 1) % 3)]], lerp1),
                                         original.Normals[triangles[j + ((singleIndex + 2) % 3)]],
                                         Vector3.Lerp(original.Normals[triangles[j + singleIndex]], original.Normals[triangles[j + ((singleIndex + 2) % 3)]], lerp2),
                                         Vector2.Lerp(original.UV[triangles[j + singleIndex]], original.UV[triangles[j + ((singleIndex + 1) % 3)]], lerp1),
+                                        //UV
                                         original.UV[triangles[j + ((singleIndex + 2) % 3)]],
                                         Vector2.Lerp(original.UV[triangles[j + singleIndex]], original.UV[triangles[j + ((singleIndex + 2) % 3)]], lerp2));
                     continue;
@@ -236,7 +251,7 @@ public class ProceduralDestroy : MonoBehaviour
         }
 
         /// <summary>
-        /// Add submeshes by inputing three vertices, normals and UVs: 
+        /// Add submeshes to _Triangles by inputing three vertices, normals and UVs: 
         /// submesh(the index in Trangle) / vert(three vertices that form a triangle)
         /// </summary>
         public void AddTriangle(int submesh, 
