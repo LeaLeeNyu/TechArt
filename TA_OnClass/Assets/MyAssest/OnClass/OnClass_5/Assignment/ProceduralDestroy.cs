@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
+using static UnityEngine.GraphicsBuffer;
 
 public class ProceduralDestroy : MonoBehaviour
 {
@@ -13,15 +15,72 @@ public class ProceduralDestroy : MonoBehaviour
     public int CutCascades = 1;
     public float ExplodeForce = 0;
 
+    private Rigidbody rb;
+    public float mass;
+
+    //mouse input
+    private Vector3 mouseDown;
+    private Vector3 mouseUp;
+    private Plane mousePlane;
+    private bool isCutting;
+
+    Vector3 planNormal;
+
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+        rb.mass = mass;
+        rb.useGravity = false;
+    }
+
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            DestroyMesh();
+
+            float x = Input.mousePosition.x;
+            float y =Input.mousePosition.y;
+
+            mouseDown = Camera.main.ScreenToWorldPoint(new Vector3(x, y, 3));
+
+            isCutting = false;
+        }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            float x = Input.mousePosition.x;
+            float y = Input.mousePosition.y;
+
+            mouseUp = Camera.main.ScreenToWorldPoint(new Vector3(x, y, 3));
+
+            Vector3 mouseOffset = mouseUp - mouseDown;
+            planNormal = Vector3.Cross(mouseOffset, Vector3.forward); 
+            mousePlane = new Plane(planNormal.normalized, mouseOffset);
+
+            isCutting = true;            
+        }
+
+        if (isCutting)
+        {
+           DestroyMesh(mousePlane);
         }
     }
 
-    private void DestroyMesh()
+    private void OnDrawGizmos()
+    {
+        if (isCutting)
+        {
+            Gizmos.color = Color.blue;
+            Gizmos.DrawLine(mouseDown, mouseUp);
+            Gizmos.color = Color.red;
+            Gizmos.DrawLine(mouseUp + (mouseDown - mouseUp)/2, mouseUp + (mouseDown - mouseUp) / 2 + planNormal.normalized);
+
+        }
+
+    }
+
+    private void DestroyMesh(Plane plane)
     {
         // get mesh
         var originalMesh = GetComponent<MeshFilter>().mesh;
@@ -45,6 +104,7 @@ public class ProceduralDestroy : MonoBehaviour
         //cut the mesh with the plane
         //it will create new submeshes, which store in the subParts
         var subParts = new List<PartMesh>();
+        
         for (var c = 0; c < CutCascades; c++)
         {
             for (var i = 0; i < parts.Count; i++)
@@ -53,12 +113,16 @@ public class ProceduralDestroy : MonoBehaviour
                 bounds.Expand(0.5f);
 
                 //Define a plane that cut the mesh
-                var plane = new Plane(UnityEngine.Random.onUnitSphere, new Vector3(UnityEngine.Random.Range(bounds.min.x, bounds.max.x),
-                                                                                   UnityEngine.Random.Range(bounds.min.y, bounds.max.y),
-                                                                                   UnityEngine.Random.Range(bounds.min.z, bounds.max.z)));
+                //var plane = new Plane(UnityEngine.Random.onUnitSphere, new Vector3(UnityEngine.Random.Range(bounds.min.x, bounds.max.x),
+                //                                                                   UnityEngine.Random.Range(bounds.min.y, bounds.max.y),
+                //                                                                   UnityEngine.Random.Range(bounds.min.z, bounds.max.z)));
+                //drew the left side mesh
                 subParts.Add(GenerateMesh(parts[i], plane, true));
+                //drew the right side mesh
                 subParts.Add(GenerateMesh(parts[i], plane, false));
             }
+
+            //what is this means? subparts in parentheses
             parts = new List<PartMesh>(subParts);
             subParts.Clear();
         }
@@ -78,14 +142,15 @@ public class ProceduralDestroy : MonoBehaviour
         var ray1 = new Ray();
         var ray2 = new Ray();
 
-
+        //for each triangle in the original mesh
         for (var i = 0; i < original.Triangles.Length; i++)
-        {
+        {            
             var triangles = original.Triangles[i];
             edgeSet = false;
 
+            //for verteices in a triangle
             for (var j = 0; j < triangles.Length; j = j + 3)
-            {
+            {                
                 //if each vertex in the triangle is on the left side of the plane, the var return ture
                 var sideA = plane.GetSide(original.Vertices[triangles[j]]) == left;
                 var sideB = plane.GetSide(original.Vertices[triangles[j + 1]]) == left;
@@ -121,6 +186,7 @@ public class ProceduralDestroy : MonoBehaviour
                 var dir1 = original.Vertices[triangles[j + ((singleIndex + 1) % 3)]] - original.Vertices[triangles[j + singleIndex]];
                 ray1.direction = dir1;
                 plane.Raycast(ray1, out var enter1);
+                //enter1: the distance between the origin point j and the cut point1
                 var lerp1 = enter1 / dir1.magnitude;
 
                 ray2.origin = original.Vertices[triangles[j + singleIndex]];
