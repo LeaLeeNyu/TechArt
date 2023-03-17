@@ -20,7 +20,7 @@ public class FractalTree : MonoBehaviour
     [Range(1, 10)] public int capSegments = 3;
     public bool use32BitIndices = false;
 
-    private BranchMeshBuilder branchBuilder;
+    private BranchMeshBuilder branchBuilder = null;
     private List<Branch> branches = new List<Branch>();
 
     void GenerateBranches()
