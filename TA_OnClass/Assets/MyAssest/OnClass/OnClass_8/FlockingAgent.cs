@@ -73,8 +73,18 @@ public class FlockingAgent : MonoBehaviour
         speed = Mathf.Clamp(speed, settings.minSpeed, settings.maxSpeed);
         velocity = dir * speed;
 
-        this.transform.position += velocity * Time.deltaTime;
-        this.transform.rotation = Quaternion.LookRotation(dir); 
+        if (IsHeadingForCollision())
+        {
+            acceleration += SteerTowards(GetObstacleAvoidDir()) * settings.avoidCollisionWeight;
+        }
+
+
+        if (velocity != Vector3.zero)
+        {
+            this.transform.position += velocity * Time.deltaTime;
+            this.transform.rotation = Quaternion.LookRotation(dir);
+        }
+
     }
 
     private Vector3 SteerTowards(Vector3 vector)
