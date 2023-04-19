@@ -10,7 +10,7 @@ public class SpiderProceduralAnimation : MonoBehaviour
     public float stepHeight = 0.1f;
     public bool bodyOrientation = true;
 
-    private float raycastRange = 10f;
+    private float raycastRange = 20f;
     private Vector3[] defaultLegPositions;
     private Vector3[] lastLegPositions;
     private Vector3 lastBodyUp;
@@ -33,6 +33,7 @@ public class SpiderProceduralAnimation : MonoBehaviour
         if (Physics.Raycast(ray, out hit, 2f * halfRange))
         {
             res[0] = hit.point;
+            Debug.Log(res[0]);
             res[1] = hit.normal;
         }
         else
@@ -118,7 +119,6 @@ public class SpiderProceduralAnimation : MonoBehaviour
         // if spider have not move and need to move
         if (indexToMove != -1 && !legMoving[0])
         {
-
             Vector3 targetPoint = desiredPositions[indexToMove] 
                                   + Mathf.Clamp(velocity.magnitude * velocityMultiplier, 0.0f, 1.5f) 
                                   * (desiredPositions[indexToMove] - legTargets[indexToMove].position) 
@@ -132,17 +132,6 @@ public class SpiderProceduralAnimation : MonoBehaviour
         }
 
         lastBodyPos = transform.position;
-
-
-        //if (nbLegs > 3 && bodyOrientation)
-        //{
-        //    Vector3 v1 = legTargets[0].position - legTargets[1].position;
-        //    Vector3 v2 = legTargets[2].position - legTargets[3].position;
-        //    Vector3 normal = Vector3.Cross(v1, v2).normalized;
-        //    Vector3 up = Vector3.Lerp(lastBodyUp, normal, 1f / (float)(smoothness + 1));
-        //    transform.up = up;
-        //    lastBodyUp = up;
-        //}
     }
 
     private void OnDrawGizmosSelected()
